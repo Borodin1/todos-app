@@ -1,0 +1,22 @@
+.todos {
+  display: flex;
+  justify-content: center;
+}
+
+.todos-lists {
+  display: flex;
+  flex-direction: column;
+  width: 822px;
+  height: 38px;
+}
+
+.todos-lists p {
+  border-radius: 10px;
+  background: #222;
+  color: #fff;
+  font-family: Inter;
+  font-size: 19px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}

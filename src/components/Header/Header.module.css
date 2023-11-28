@@ -1,0 +1,24 @@
+.header-title {
+  color: var(--light, #fff);
+  font-family: Racing Sans One;
+  font-size: 64px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+.header-title h1 {
+  margin-bottom: 0;
+}
+
+.header-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.header-solid {
+  border-style: solid;
+  width: 240px;
+  border-color: #fff;
+}
