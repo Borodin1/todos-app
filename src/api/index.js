@@ -21,5 +21,19 @@ export const api = {
       );
       return response;
     },
+    async deleteTodo(id) {
+      const { data } = await axios.delete(
+        `https://todo-app-390314-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`
+      );
+      return data;
+    },
+    async updatedTodo(id, updatedTodo) {
+      const { data } = await axios.put(
+        `https://todo-app-390314-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`,
+        updatedTodo
+      );
+
+      return data;
+    },
   },
 };

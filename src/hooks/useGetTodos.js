@@ -1,11 +1,16 @@
-import { useQuery } from "react-query";
+import { useQuery, useQueryClient } from "react-query";
 import { api } from "../api";
 import { useEffect, useState } from "react";
 
 export const useGetTodos = () => {
   const [todos, setTodos] = useState([]);
+  const queryClient = useQueryClient();
 
-  const { data, isFetched } = useQuery("todos", api.todos.getTodos);
+  const { data, isFetched } = useQuery("todos", api.todos.getTodos, {
+    onSuccess: () => {
+      queryClient.invalidateQueries("todos");
+    },
+  });
 
   useEffect(() => {
     const loadedTodos = [];
