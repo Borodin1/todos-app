@@ -1,4 +1,4 @@
-const Input = ({ type, value, handleChange, placeholder }) => {
+export const Input = ({ type, value, handleChange, placeholder }) => {
   return (
     <input
       type={type}
@@ -8,5 +8,3 @@ const Input = ({ type, value, handleChange, placeholder }) => {
     />
   );
 };
-
-export default Input;
