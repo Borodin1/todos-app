@@ -27,10 +27,13 @@ export const api = {
       );
       return data;
     },
-    async updatedTodo(id, updatedTodo) {
+    async updatedTodo(newTodo) {
+      console.log(newTodo);
       const { data } = await axios.put(
-        `https://todo-app-390314-default-rtdb.europe-west1.firebasedatabase.app/todos/${id}.json`,
-        updatedTodo
+        `https://todo-app-390314-default-rtdb.europe-west1.firebasedatabase.app/todos/${newTodo?.id}.json`,
+        {
+          title: newTodo?.title,
+        }
       );
 
       return data;
