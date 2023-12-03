@@ -3,6 +3,7 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 30px;
 }
 
 .todos-lists {
@@ -46,9 +47,18 @@
   font-style: normal;
   font-weight: 400;
   line-height: normal;
-
   display: flex;
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
+}
+
+@media only screen and (max-width: 770px) {
+  .todos-lists {
+    width: 500px;
+  }
+  .todos-lists input {
+    width: 100px;
+    height: 50px;
+  }
 }
