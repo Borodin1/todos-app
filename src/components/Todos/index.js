@@ -24,42 +24,47 @@ export const Todos = () => {
     setEditedTodo({ id: null, title: "" });
   };
 
-  const todosJSX = data?.map((todo) => {
-    return (
-      <ul key={todo?.id}>
-        <li>
-          {editedTodo?.id === todo?.id ? (
-            <>
-              <Input
-                type="text"
-                value={editedTodo?.title || ""}
-                handleChange={(e) => setEditedTodo({ ...editedTodo, title: e })}
-              />
-              <button onClick={handleUpdateTodo}>Update Todo</button>
-            </>
-          ) : (
-            <>
-              {todo?.title}
-              <div>
-                <span onClick={() => handleDeleteTodo(todo?.id)}>
-                  <Trash />
-                </span>
-                <span
-                  onClick={() =>
-                    setEditedTodo({
-                      id: todo?.id,
-                      title: todo?.title,
-                    })
-                  }>
-                  <Rotate />
-                </span>
-              </div>
-            </>
-          )}
-        </li>
-      </ul>
-    );
-  });
+  const todosJSX = data
+    ?.slice()
+    .reverse()
+    .map((todo) => {
+      return (
+        <ul key={todo?.id}>
+          <li>
+            {editedTodo?.id === todo?.id ? (
+              <>
+                <Input
+                  type="text"
+                  value={editedTodo?.title || ""}
+                  handleChange={(e) =>
+                    setEditedTodo({ ...editedTodo, title: e })
+                  }
+                />
+                <button onClick={handleUpdateTodo}>Update Todo</button>
+              </>
+            ) : (
+              <>
+                {todo?.title}
+                <div>
+                  <span onClick={() => handleDeleteTodo(todo?.id)}>
+                    <Trash />
+                  </span>
+                  <span
+                    onClick={() =>
+                      setEditedTodo({
+                        id: todo?.id,
+                        title: todo?.title,
+                      })
+                    }>
+                    <Rotate />
+                  </span>
+                </div>
+              </>
+            )}
+          </li>
+        </ul>
+      );
+    });
 
   return (
     <div className={styles["todos"]}>

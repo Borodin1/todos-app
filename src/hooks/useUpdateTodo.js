@@ -17,14 +17,7 @@ export const useUpdateTodo = () => {
     }
   );
 
-  const handleUpdateTodo = async () => {
-    console.log(editedTodo.title);
-    await mutation.mutateAsync(editedTodo);
-    setEditedTodo({ id: null, title: "" });
-  };
-
   return {
-    handleUpdateTodo,
     mutation,
     editedTodo,
     setEditedTodo,

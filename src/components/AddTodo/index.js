@@ -14,7 +14,6 @@ export const AddTodo = () => {
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    console.log(inputText);
     const todo = {
       title: inputText,
       id: Math.floor(Math.random() * 1000) + 1,
@@ -29,12 +28,14 @@ export const AddTodo = () => {
         <form onSubmit={handleSubmit}>
           <Input
             type="text"
+            placeholder="Add a new task..."
             handleChange={(e) => setInputText(e)}
             value={inputText}
           />
           <button>Add Todo</button>
         </form>
       </div>
+      <div className={styles["addTodo-solidLine"]}></div>
     </div>
   );
 };

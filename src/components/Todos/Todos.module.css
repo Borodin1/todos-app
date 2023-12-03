@@ -12,6 +12,30 @@
   height: 38px;
 }
 
+.todos-lists input {
+  width: 250px;
+  height: 50px;
+  font-size: 19px;
+  border-radius: 20px;
+  background: #d9d9d9;
+}
+
+.todos-lists button {
+  border-radius: 20px;
+  background: #4f4f4f;
+  color: #fff;
+  font-family: Racing Sans One;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  margin-bottom: 25px;
+  margin-top: 25px;
+  border-style: none;
+  padding: 12px;
+  margin: 0;
+}
+
 .todos-lists li {
   list-style-type: none;
   border-radius: 10px;
