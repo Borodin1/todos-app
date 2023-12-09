@@ -1,0 +1,7 @@
+export const todosTypes = Object.freeze({
+  FETCH_TODOS: "FETCH_TODOS",
+  START_FETCHING: "START_FETCHING",
+  STOP_FETCHING: "STOP_FETCHING",
+  ADD_TODO: "ADD_TODO",
+  DELETE_TODO: "DELETE_TODO",
+});

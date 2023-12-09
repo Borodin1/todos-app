@@ -13,6 +13,7 @@ import { useDeleteTodo } from "../../hooks/useDeleteTodo";
 import { Rotate } from "../../assets/svg/Rotate";
 import { useUpdateTodo } from "../../hooks/useUpdateTodo";
 import { Input } from "../elements/input";
+import { useEffect, useState } from "react";
 
 export const Todos = () => {
   const { data, isFetched } = useGetTodos();
@@ -26,43 +27,40 @@ export const Todos = () => {
 
   const todosJSX = data
     ?.slice()
-    .reverse()
-    .map((todo) => {
+    ?.reverse()
+    ?.map((todo) => {
+      console.log(data);
       return (
-        <ul key={todo?.id}>
-          <li>
-            {editedTodo?.id === todo?.id ? (
-              <>
-                <Input
-                  type="text"
-                  value={editedTodo?.title || ""}
-                  handleChange={(e) =>
-                    setEditedTodo({ ...editedTodo, title: e })
-                  }
-                />
-                <button onClick={handleUpdateTodo}>Update Todo</button>
-              </>
-            ) : (
-              <>
-                {todo?.title}
-                <div>
-                  <span onClick={() => handleDeleteTodo(todo?.id)}>
-                    <Trash />
-                  </span>
-                  <span
-                    onClick={() =>
-                      setEditedTodo({
-                        id: todo?.id,
-                        title: todo?.title,
-                      })
-                    }>
-                    <Rotate />
-                  </span>
-                </div>
-              </>
-            )}
-          </li>
-        </ul>
+        <li key={todo?.id}>
+          {editedTodo?.id === todo?.id ? (
+            <>
+              <Input
+                type="text"
+                value={editedTodo?.title || ""}
+                handleChange={(e) => setEditedTodo({ ...editedTodo, title: e })}
+              />
+              <button onClick={handleUpdateTodo}>Update Todo</button>
+            </>
+          ) : (
+            <>
+              {todo?.title}
+              <div>
+                <span onClick={() => handleDeleteTodo(todo?.id)}>
+                  <Trash />
+                </span>
+                <span
+                  onClick={() =>
+                    setEditedTodo({
+                      id: todo?.id,
+                      title: todo?.title,
+                    })
+                  }>
+                  <Rotate />
+                </span>
+              </div>
+            </>
+          )}
+        </li>
       );
     });
 
@@ -70,7 +68,7 @@ export const Todos = () => {
     <div className={styles["todos"]}>
       <AddTodo />
       <div className={styles["todos-lists"]}>
-        {fetchify(isFetched, todosJSX)}
+        <ul>{fetchify(isFetched, todosJSX)}</ul>
       </div>
     </div>
   );

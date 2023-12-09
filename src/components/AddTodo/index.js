@@ -9,17 +9,17 @@ import { useAddTodo } from "../../hooks/useAddTodo";
 import styles from "./AddTodo.module.css";
 
 export const AddTodo = () => {
-  const createTodo = useAddTodo();
+  const addTodo = useAddTodo();
   const [inputText, setInputText] = useState("");
 
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
     const todo = {
       title: inputText,
       id: Math.floor(Math.random() * 1000) + 1,
     };
 
-    createTodo.mutateAsync(todo);
+    addTodo(todo);
     setInputText("");
   };
   return (

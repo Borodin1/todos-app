@@ -1,24 +1,18 @@
-import { useQuery } from "react-query";
-import { api } from "../api";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { todosActions } from "lib/redux/actions/todos";
+import { getIsFetched, getTodos } from "lib/redux/selectors/todos";
 
 export const useGetTodos = () => {
-  const [todos, setTodos] = useState([]);
-
-  const { data, isFetched } = useQuery("todos", api.todos.getTodos);
+  const dispatch = useDispatch();
+  const todos = useSelector(getTodos);
+  const isFetched = useSelector(getIsFetched);
 
   useEffect(() => {
-    const loadedTodos = [];
-    if (data) {
-      for (const key in data) {
-        loadedTodos.push({
-          id: key,
-          title: data[key].title,
-        });
-      }
-      setTodos(loadedTodos);
+    if (todos.length === 0) {
+      dispatch(todosActions.fetchTodosAsync());
     }
-  }, [data]);
+  }, [dispatch, todos]);
 
   return {
     data: todos || [],

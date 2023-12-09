@@ -1,22 +1,11 @@
-import { useMutation, useQueryClient } from "react-query";
-import { api } from "../api";
+import { useDispatch } from "react-redux";
+import { todosActions } from "lib/redux/actions/todos";
+import { useEffect } from "react";
 
 export const useDeleteTodo = () => {
-  const queryClient = useQueryClient();
-
-  const mutation = useMutation(
-    (id) => {
-      return api.todos.deleteTodo(id);
-    },
-    {
-      onSuccess: () => {
-        queryClient.invalidateQueries("todos");
-      },
-    }
-  );
-
+  const dispatch = useDispatch();
   const handleDeleteTodo = async (id) => {
-    await mutation.mutateAsync(id);
+    dispatch(todosActions.deleteTodoAsync(id));
   };
 
   return { handleDeleteTodo };

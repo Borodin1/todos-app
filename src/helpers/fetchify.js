@@ -1,5 +1,5 @@
 export const fetchify = (isFetched, content) => {
-  if (!isFetched) {
+  if (isFetched) {
     return "Loading ...";
   }
   if (content) {
